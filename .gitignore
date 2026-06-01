@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Pytest
+.pytest_cache/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
