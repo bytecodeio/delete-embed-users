@@ -1,0 +1,7 @@
+[[build.env]]
+name = "GOOGLE_RUNTIME_VERSION"
+value = "3.13"
+
+[[build.env]]
+name = "GOOGLE_ENTRYPOINT"
+value = "/layers/google.python.uv/uv-dependencies/.venv/bin/lkr"

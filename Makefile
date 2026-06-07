@@ -25,7 +25,7 @@ docs:
 	uv run typer lkr/main.py utils docs --output lkr.md
 
 build:
-	gcloud builds submit -t us-west1-docker.pkg.dev/looker-scale-testing/delete-embed-users/delete-embed-users .
+	gcloud builds submit -t us-west1-docker.pkg.dev/looker-scale-testing/delete-embed-users-v2/delete-embed-users .
 
 test-offline:
 	QUERY_ID="$(QUERY_ID)" DASHBOARD_ID="$(DASHBOARD_ID)" MODEL="$(MODEL)" SE_OFFLINE="$(SE_OFFLINE)" ./test_offline.sh $(MODE)
