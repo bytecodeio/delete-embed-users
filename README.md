@@ -102,18 +102,25 @@ uv run lkr load-test delete-embed-users --first-name "Embed" --no-dry-run --limi
 
 ---
 
-## Running in a Container
+## Deployment
 
-### Build the Image
-To build the Docker image using the provided [Dockerfile](file:///Users/pankajgupta/Desktop/delete-embed-users/Dockerfile):
-```bash
-make build
-```
+This tool is pre-packaged as a Docker image. You do not need to install Python or build any code to use it. You can run it effortlessly on a serverless Google Cloud Run Job by copying the command below:
 
-### Run the Container
-Pass your `.env` configuration file to run CLI commands in the isolated environment:
+1. Update `--project` to your Google Cloud project.
+2. Provide your Looker API Credentials in the `--set-env-vars` flag.
+3. Pass any script arguments into `--args`.
+
 ```bash
-docker run --rm -it --env-file .env lkr:latest load-test debug looker
+gcloud run jobs create delete-embed-users-job \
+    --project=your-target-cloud-project \
+    --region=us-central1 \
+    --task-timeout=60 \
+    --max-retries=0 \
+    --execute-now \
+    --image=us-west1-docker.pkg.dev/looker-scale-testing/delete-embed-users-v2/delete-embed-users:latest \
+    --set-env-vars=LOOKERSDK_CLIENT_ID=YOUR_CLIENT_ID,LOOKERSDK_CLIENT_SECRET=YOUR_CLIENT_SECRET,LOOKERSDK_BASE_URL=https://yourinstance.cloud.looker.com \
+    --command="lkr" \
+    --args="delete-embed-users"
 ```
 
 ---

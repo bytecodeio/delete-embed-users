@@ -24,8 +24,9 @@ dev-install:
 docs:
 	uv run typer lkr/main.py utils docs --output lkr.md
 
+# Adjust the Image Tag below (`delete-user/cli:latest`) to match your desired structure
 build:
-	gcloud builds submit -t us-west1-docker.pkg.dev/looker-scale-testing/delete-embed-users-v2/delete-embed-users .
+	gcloud builds submit -t us-west1-docker.pkg.dev/looker-scale-testing/delete-embed-users-v2/delete-embed-users:latest .
 
 test-offline:
 	QUERY_ID="$(QUERY_ID)" DASHBOARD_ID="$(DASHBOARD_ID)" MODEL="$(MODEL)" SE_OFFLINE="$(SE_OFFLINE)" ./test_offline.sh $(MODE)
